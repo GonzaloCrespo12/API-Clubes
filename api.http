@@ -1,0 +1,53 @@
+// Archivo: api.http
+
+### 1. Crear una nueva Liga (POST)
+POST http://localhost:8080/api/ligas
+Content-Type: application/json
+
+{
+  "nombre": "Premier League",
+  "pais": "Inglaterra"
+}
+
+### 2. Obtener todas las Ligas (GET)
+GET http://localhost:8080/api/ligas
+
+### 3. Crear un nuevo Equipo (POST)
+POST http://localhost:8080/api/equipos
+Content-Type: application/json
+
+{
+  "nombre": "Arsenal FC",
+  "presupuesto": 150000000.00,
+  "formacionTactica": "4-2-3-1",
+  "ligaId": 1
+}
+
+### 4. Obtener todos los Equipos (GET)
+GET http://localhost:8080/api/equipos
+
+### 5. Registrar un nuevo Jugador (POST)
+POST http://localhost:8080/api/jugadores
+Content-Type: application/json
+
+{
+  "nombre": "Martin Ødegaard",
+  "posicion": "Mediocampista Ofensivo",
+  "valorMercado": 90000000.00,
+  "equipoId": 1
+}
+
+### 6. Obtener todos los Jugadores (GET)
+GET http://localhost:8080/api/jugadores
+
+### 7. Actualizar la Liga 1 (PUT)
+PUT http://localhost:8080/api/ligas/1
+Content-Type: application/json
+
+{
+  "nombre": "LaLiga EA Sports",
+  "pais": "España"
+}
+
+### 8. Eliminar la Liga 1 (DELETE)
+DELETE http://localhost:8080/api/ligas/1
