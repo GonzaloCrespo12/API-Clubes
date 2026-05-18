@@ -62,3 +62,5 @@ El sistema gestiona tres entidades principales con relaciones Lazy de alto rendi
 4. Ejecuta el siguiente comando en la terminal para compilar los mappers de MapStruct y levantar el servidor de desarrollo:
    ```bash
    .\mvnw clean spring-boot:run
+
+5. El archivo api.http contiene texto con pruebas a realizar, en un entorno como THUNDER CLIENT
