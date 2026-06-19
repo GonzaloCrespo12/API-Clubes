@@ -6,7 +6,8 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "jugadores")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -27,5 +28,7 @@ public class Jugador {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "equipo_id", foreignKey = @ForeignKey(name = "fk_jugador_equipo"))
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private Equipo equipo;
 }

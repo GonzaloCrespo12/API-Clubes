@@ -30,6 +30,6 @@ public class JugadorController {
     @GetMapping
     public ResponseEntity<List<JugadorResponseDTO>> obtenerTodos() {
         List<JugadorResponseDTO> jugadores = jugadorService.obtenerTodos();
-        return ResponseEntity.ok(jugadorService.obtenerTodos());
+        return ResponseEntity.ok(jugadores);
     }
 }

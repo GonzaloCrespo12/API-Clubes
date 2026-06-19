@@ -2,6 +2,7 @@ package com.Gestion.api_clubes.service;
 
 import com.Gestion.api_clubes.dto.LigaRequestDTO;
 import com.Gestion.api_clubes.dto.LigaResponseDTO;
+import com.Gestion.api_clubes.exception.ResourceNotFoundException;
 import com.Gestion.api_clubes.entity.Liga;
 import com.Gestion.api_clubes.mapper.LigaMapper;
 import com.Gestion.api_clubes.repository.LigaRepository;
@@ -49,7 +50,7 @@ public class LigaService {
     public LigaResponseDTO actualizarLiga(Long id, LigaRequestDTO requestDTO) {
         // Buscamos si la liga existe; si no, lanzamos un error 
         Liga ligaExistente = ligaRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("No se puede actualizar. Liga no encontrada con ID: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("No se puede actualizar. Liga no encontrada con ID: " + id));
 
         // Modificamos los campos permitidos
         ligaExistente.setNombre(requestDTO.getNombre());
@@ -63,7 +64,7 @@ public class LigaService {
     // Método para ELIMINAR (DELETE) 
     public void eliminarLiga(Long id) {
         if (!ligaRepository.existsById(id)) { // Verificamos si existe antes de borrar 
-            throw new RuntimeException("No se puede eliminar. Liga no encontrada con ID: " + id);
+            throw new ResourceNotFoundException("No se puede eliminar. Liga no encontrada con ID: " + id);
         }
         ligaRepository.deleteById(id); // Borramos físicamente el registro 
     }

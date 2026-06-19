@@ -7,7 +7,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "equipos")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -28,8 +29,12 @@ public class Equipo {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "liga_id", foreignKey = @ForeignKey(name = "fk_equipo_liga"))
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private Liga liga;
 
     @OneToMany(mappedBy = "equipo", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private List<Jugador> jugadores;
 }

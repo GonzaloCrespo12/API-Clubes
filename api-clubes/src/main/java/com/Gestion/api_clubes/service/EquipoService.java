@@ -2,6 +2,7 @@ package com.Gestion.api_clubes.service;
 
 import com.Gestion.api_clubes.dto.EquipoRequestDTO;
 import com.Gestion.api_clubes.dto.EquipoResponseDTO;
+import com.Gestion.api_clubes.exception.ResourceNotFoundException;
 import com.Gestion.api_clubes.entity.Equipo;
 import com.Gestion.api_clubes.entity.Liga;
 import com.Gestion.api_clubes.mapper.EquipoMapper;
@@ -30,7 +31,7 @@ public class EquipoService {
         // Buscamos la liga en la BD usando el ID que viene en el DTO 
         // Usamos orElseThrow para lanzar un error si nos envían un ID de liga que no existe
         Liga liga = ligaRepository.findById(dto.getLigaId())
-                .orElseThrow(() -> new RuntimeException("Liga no encontrada con el ID: " + dto.getLigaId()));
+                .orElseThrow(() -> new ResourceNotFoundException("Liga no encontrada con el ID: " + dto.getLigaId()));
 
         // Convertimos el DTO a Entidad 
         Equipo equipo = equipoMapper.toEntity(dto);

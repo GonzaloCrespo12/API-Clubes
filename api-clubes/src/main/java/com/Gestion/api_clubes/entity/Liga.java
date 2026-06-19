@@ -6,7 +6,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "ligas")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -23,5 +24,7 @@ public class Liga {
     private String pais;
 
     @OneToMany(mappedBy = "liga", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private List<Equipo> equipos;
 }

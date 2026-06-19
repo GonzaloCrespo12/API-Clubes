@@ -2,6 +2,7 @@ package com.Gestion.api_clubes.service;
 
 import com.Gestion.api_clubes.dto.JugadorRequestDTO;
 import com.Gestion.api_clubes.dto.JugadorResponseDTO;
+import com.Gestion.api_clubes.exception.ResourceNotFoundException;
 import com.Gestion.api_clubes.entity.Equipo;
 import com.Gestion.api_clubes.entity.Jugador;
 import com.Gestion.api_clubes.mapper.JugadorMapper;
@@ -28,7 +29,7 @@ public class JugadorService {
     public JugadorResponseDTO registrarJugador(JugadorRequestDTO dto) {
         // 1. Validamos que el equipo exista [cite: 563-565]
         Equipo equipo = equipoRepository.findById(dto.getEquipoId())
-                .orElseThrow(() -> new RuntimeException("Equipo no encontrado con el ID: " + dto.getEquipoId()));
+                .orElseThrow(() -> new ResourceNotFoundException("Equipo no encontrado con el ID: " + dto.getEquipoId()));
 
         // 2. Convertimos DTO a Entidad
         Jugador jugador = jugadorMapper.toEntity(dto);
